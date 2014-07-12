@@ -8,7 +8,7 @@ body {
   height: 100%;
 }
 
-#gmap {
+#cafe-map {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -16,7 +16,7 @@ body {
   right: 0;
 }
 
-#glist {
+#cafe-list {
   background: #fff;
   position: absolute;
   left: 0px;

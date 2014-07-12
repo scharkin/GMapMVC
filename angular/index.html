@@ -3,18 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>Angular Google maps demo</title>
-    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="../css/app.css"/>
   </head>
   <body>
     <div ng-controller="CafesCtrl">
-      <google-map id="gmap" draggable="true" center="center" zoom="zoom">
-        <marker ng-repeat="cafe in cafes" coords='{latitude: cafe.lat, longitude: cafe.lon}'
-                click="selectCafe(cafe)" icon="getIcon(cafe)">
+      <google-map id="cafe-map" center="center" zoom="zoom" pan="true" draggable="true">
+        <marker ng-repeat="cafe in cafes" icon="getIcon(cafe)"
+                coords='{latitude: cafe.lat, longitude: cafe.lon}'
+                click="selectCafe(cafe)">
         </marker>
       </google-map>
-      <div id="glist">
-        <div class="place" scroll-if="cafe.id == cid" ng-class="{selected: cafe.id == cid}"
-             ng-repeat="cafe in cafes | orderBy: 'city'" ng-click="selectCafe(cafe)">
+      <div id="cafe-list">
+        <div ng-repeat="cafe in cafes | orderBy: 'city'" ng-click="selectCafe(cafe)"
+             class="place" ng-class="{selected: cafe.id == selectedCafeId}"
+             scroll-if="cafe.id == selectedCafeId">
           <h3>{{cafe.address}}</h3>
           <h4><b>{{cafe.city}}</b>, {{cafe.state}} {{cafe.zip}}</h4>
         </div>

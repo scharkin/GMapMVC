@@ -9,11 +9,8 @@ angular.module('myApp', ['google-maps']).
     return function (scope, element, attrs) {
       scope.$watch(attrs.scrollIf, function (value) {
         if (value) {
-          var position = angular.element(element).position().top +
-            angular.element(element).parent().scrollTop();
-          angular.element(element).parent().animate({
-            scrollTop: position
-          }, 1000);
+          var pos = element.position().top + element.parent().scrollTop();
+          element.parent().animate({scrollTop: pos}, 1000);
         }
       });
     }
@@ -24,13 +21,14 @@ angular.module('myApp', ['google-maps']).
     $scope.zoom = 8;
 
     $scope.selectCafe = function (cafe) {
-      $scope.cid = cafe.id;
+      $scope.selectedCafeId = cafe.id;
+      $scope.center = {latitude: cafe.lat, longitude: cafe.lon};
     }
 
     $scope.getIcon = function (cafe) {
-      var icon = 'img/ball.png';
-      if ($scope.cid == cafe.id) {
-        icon = 'img/pin.png'
+      var icon = '../img/ball.png';
+      if ($scope.selectedCafeId == cafe.id) {
+        icon = '../img/pin.png'
       }
       return icon;
     }

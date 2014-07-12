@@ -19,8 +19,8 @@ $(function () {
   var CafeView = Backbone.View.extend({
     className: 'place',
     iconMap: {
-      true: "img/pin.png",
-      false: "img/ball.png"
+      true: "../img/pin.png",
+      false: "../img/ball.png"
     },
     marker: undefined,
     events: {
@@ -39,6 +39,7 @@ $(function () {
     showSelected: function () {
       this.marker.setIcon(this.iconMap[!!this.model.changed.selected]);
       this.selectItem(this.model.changed.selected);
+      this.map.panTo(this.marker.position);
     },
 
     selectItem: function () {
@@ -54,42 +55,39 @@ $(function () {
       if (el.length) {
         var element = $(el[0])
         var pos = element.position().top + element.parent().scrollTop();
-        element.parent().animate({
-          scrollTop: pos
-        }, 1000);
+        element.parent().animate({scrollTop: pos}, 1000);
       }
     },
 
-    showOnMap: function (mapView) {
-      var that = this;
-      var position = new google.maps.LatLng(
-        this.model.get('lat'), this.model.get('lon'));
-      that.marker = new google.maps.Marker({
-        position: position,
-        map: mapView.map,
+    showOnMap: function (map) {
+      this.map = map;
+      //create marker
+      var pos = new google.maps.LatLng(this.model.get('lat'), this.model.get('lon'));
+      this.marker = new google.maps.Marker({
+        position: pos,
+        map: map,
         icon: this.iconMap[false]
       });
+      var that = this;
+      //set marker click listener
       google.maps.event.addListener(that.marker, 'click', function (e) {
         that.model.select();
       });
     },
 
     render: function () {
-      var view = this.template(this.model.toJSON());
-      this.$el.html(view);
+      this.$el.html(this.template(this.model.toJSON()));
       return this.$el;
     }
   });
 
   var MapView = Backbone.View.extend({
-    el: $('#gmap'),
+    el: $('#cafe-map'),
 
     addCafe: function (cafe) {
       var view = new CafeView({model: cafe});
-      view.showOnMap(this);
-      var item = view.render();
-      item.addClass(view.model.id);
-      $('#glist').append(item);
+      view.showOnMap(this.map);
+      $('#cafe-list').append(view.render().addClass(view.model.id));
     },
 
     initialize: function (cafes) {
@@ -98,7 +96,7 @@ $(function () {
         zoom: 8,
         center: latlng
       };
-      this.map = new google.maps.Map(document.getElementById('gmap'), mapOptions);
+      this.map = new google.maps.Map(document.getElementById('cafe-map'), mapOptions);
       var that = this;
       // sort cafe list by city
       var collection = new Cafes(new Cafes(cafes).sortBy(function(c) {return c.get('city')}));
