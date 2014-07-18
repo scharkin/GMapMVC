@@ -7,13 +7,13 @@
 </head>
 <body>
   <script type="text/x-handlebars">
-    {{render 'cafes'}}
+    {{render 'places'}}
   </script>
 
-  <script type="text/x-handlebars" id="cafes">
-    <div id="cafe-map"></div>
+  <script type="text/x-handlebars" id="places">
+    <div id="place-map"></div>
     {{#view App.MapView contentBinding="this"}}{{/view}}
-    <div id="cafe-list">
+    <div id="place-list">
       {{#each}}
       <div {{bind-attr class=":place selected"}} {{action 'select'}}>
         <h3>{{address}}</h3>

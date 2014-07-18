@@ -8,7 +8,7 @@ body {
   height: 100%;
 }
 
-#cafe-map {
+#place-map {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -16,7 +16,7 @@ body {
   right: 0;
 }
 
-#cafe-list {
+#place-list {
   background: #fff;
   position: absolute;
   left: 0px;

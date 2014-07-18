@@ -6,19 +6,19 @@
     <link rel="stylesheet" href="../css/app.css"/>
   </head>
   <body>
-    <div ng-controller="CafesCtrl">
-      <google-map id="cafe-map" center="center" zoom="zoom" pan="true" draggable="true">
-        <marker ng-repeat="cafe in cafes" icon="getIcon(cafe)"
-                coords='{latitude: cafe.lat, longitude: cafe.lon}'
-                click="selectCafe(cafe)">
+    <div ng-controller="PlacesCtrl">
+      <google-map id="place-map" center="center" zoom="zoom" pan="true" draggable="true">
+        <marker ng-repeat="place in places" icon="getIcon(place)"
+                coords='{latitude: place.lat, longitude: place.lon}'
+                click="selectPlace(place)">
         </marker>
       </google-map>
-      <div id="cafe-list">
-        <div ng-repeat="cafe in cafes | orderBy: 'city'" ng-click="selectCafe(cafe)"
-             class="place" ng-class="{selected: cafe.id == selectedCafeId}"
-             scroll-if="cafe.id == selectedCafeId">
-          <h3>{{cafe.address}}</h3>
-          <h4><b>{{cafe.city}}</b>, {{cafe.state}} {{cafe.zip}}</h4>
+      <div id="place-list">
+        <div ng-repeat="place in places | orderBy: 'city'" ng-click="selectPlace(place)"
+             class="place" ng-class="{selected: place.id == selectedPlaceId}"
+             scroll-if="place.id == selectedPlaceId">
+          <h3>{{place.address}}</h3>
+          <h4><b>{{place.city}}</b>, {{place.state}} {{place.zip}}</h4>
         </div>
       </div>
     </div>
