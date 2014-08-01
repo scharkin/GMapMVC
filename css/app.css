@@ -16,11 +16,17 @@ body {
   right: 0;
 }
 
+#searchTerm {
+  position: absolute;
+  top: 0px;
+  font-size: 13px;
+}
+
 #place-list {
   background: #fff;
   position: absolute;
   left: 0px;
-  top: 0px;
+  top: 30px;
   bottom: 0px;
   width: 180px;
   font-size: 12px;

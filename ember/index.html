@@ -13,6 +13,7 @@
   <script type="text/x-handlebars" id="places">
     <div id="place-map"></div>
     {{#view App.MapView contentBinding="this"}}{{/view}}
+    <input type="text" placeholder="Search" id="searchTerm">
     <div id="place-list">
       {{#each}}
       <div {{bind-attr class=":place selected"}} {{action 'select'}}>
