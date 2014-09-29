@@ -19,14 +19,14 @@ body {
 #searchTerm {
   position: absolute;
   top: 0px;
-  font-size: 13px;
+  width: 158px;
 }
 
 #place-list {
   background: #fff;
   position: absolute;
   left: 0px;
-  top: 30px;
+  top: 22px;
   bottom: 0px;
   width: 180px;
   font-size: 12px;
@@ -48,7 +48,7 @@ body {
 }
 
 .place {
-  border-bottom: 1px solid #555;
+  border-bottom: 1px dashed gray;
 }
 
 .place.selected {

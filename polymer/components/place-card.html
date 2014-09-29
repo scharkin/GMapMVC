@@ -1,0 +1,23 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<polymer-element name="place-card">
+  <template>
+    <style>
+      div {
+        border-bottom: 1px dashed orange;
+      }
+      div ::content h3 {
+        color: blue;
+      }
+    </style>
+    <div>
+      <content></content>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      created: function () {
+//        console.log(3, this);
+      }
+    });
+  </script>
+</polymer-element>

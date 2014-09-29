@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <title>Ember Google maps demo</title>
   <link rel="stylesheet" href="../css/app.css">
+  <script src="../polymer/bower_components/platform/platform.js"></script>
+  <link rel="import" href="../polymer/bower_components/polymer/polymer.html">
+  <link rel="import" href="../polymer/components/place-card.html">
 </head>
 <body>
   <script type="text/x-handlebars">
@@ -13,12 +16,17 @@
   <script type="text/x-handlebars" id="places">
     <div id="place-map"></div>
     {{#view App.MapView contentBinding="this"}}{{/view}}
+
     <input type="text" placeholder="Search" id="searchTerm">
     <div id="place-list">
       {{#each}}
       <div {{bind-attr class=":place selected"}} {{action 'select'}}>
-        <h3>{{address}}</h3>
-        <h4><b>{{city}}</b>, {{state}} {{zip}}</h4>
+
+        <place-card>
+          <h3>{{address}}</h3>
+          <h4><b>{{city}}</b>, {{state}} {{zip}}</h4>
+        </place-card>
+
       </div>
       {{/each}}
     </div>

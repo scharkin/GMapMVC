@@ -1,0 +1,24 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+<polymer-element name="place-service" attributes="places url">
+  <template>
+    <core-ajax id="ajax"
+               auto
+               url="{{url}}"
+               on-core-response="{{placesLoaded}}"
+               handleAs="json">
+    </core-ajax>
+  </template>
+  <script>
+    Polymer({
+      created: function () {
+//        this.places = [];
+//        console.log(0, this);
+      },
+      placesLoaded: function () {
+        this.places = this.$.ajax.response.slice(0); //copy
+//        console.log(1, this);
+      }
+    });
+  </script>
+</polymer-element>

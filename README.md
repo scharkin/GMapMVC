@@ -1,15 +1,25 @@
 GMapMVC
 =======
 
-Compare how the same application using [Google Maps API](https://developers.google.com/maps/web/) can be made with top client MV* frameworks 
 [Angular](https://angularjs.org/), 
+[Ember](http://emberjs.com/),
 [Backbone](http://backbonejs.org/), 
-[Ember](http://emberjs.com/).
+[Polymer](https://www.polymer-project.org/) 
+demo using [Google Maps API](https://developers.google.com/maps/web/). 
 
-### run the app 
-to run the app after clone or zip dowload go to angular or backbone or ember directory and open index.html in a browser:
+# setup
+cd polymer
 
-```
-cd angular
-open index.html  
-```
+bower update  
+
+# run a web server
+python -m SimpleHTTPServer
+
+# see in a browser
+http://localhost:8000/angular
+
+http://localhost:8000/ember
+
+http://localhost:8000/backbone
+
+http://localhost:8000/polymer

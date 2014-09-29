@@ -1,9 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <title>Angular Google maps demo</title>
     <link rel="stylesheet" href="../css/app.css"/>
+    <link rel="import" href="../polymer/bower_components/polymer/polymer.html">
+    <link rel="import" href="../polymer/components/place-card.html">
   </head>
   <body>
     <div ng-controller="PlacesCtrl">
@@ -13,16 +15,20 @@
                 click="selectPlace(place)">
         </marker>
       </google-map>
+
       <input type="text" ng-model="search" placeholder="Search" id="searchTerm">
       <div id="place-list">
         <div ng-repeat="place in places | filter:search | orderBy: 'city'"
              class="place" ng-class="{selected: place.id == selectedPlaceId}"
              ng-click="selectPlace(place)" scroll-if="place.id == selectedPlaceId">
-          <h3>{{place.address}}</h3>
-          <h4><b>{{place.city}}</b>, {{place.state}} {{place.zip}}</h4>
+          <place-card>
+            <h3>{{place.address}}</h3>
+            <h4><b>{{place.city}}</b>, {{place.state}} {{place.zip}}</h4>
+          </place-card>
         </div>
       </div>
     </div>
+
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>

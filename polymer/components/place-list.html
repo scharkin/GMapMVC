@@ -1,0 +1,44 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="place-service.html">
+<link rel="import" href="place-card.html">
+<polymer-element name="place-list" attributes="path">
+  <template>
+		<style>
+      div {
+			  position: absolute;
+			  left: 0px;
+			  top: 0px;
+			  bottom: 0px;
+			  width: 180px;
+			  overflow-y: scroll;
+      }
+ 			h3 {
+			  font-size: 14px;
+			  padding: 4px 8px;
+  			margin: 0px;
+  		}
+ 			h4 {
+  			font-weight: normal;
+			  font-size: 13px;
+			  padding: 4px 8px;
+  			margin: 0px;
+  		}
+    </style>
+	    <place-service id="service" places="{{places}}" url="{{path}}"></place-service>
+    <div>
+    <template repeat="{{place in places}}">
+    	<place-card>
+				<h3>{{place.address}}</h3>
+        <h4><b>{{place.city}}</b>, {{place.state}} {{place.zip}}</h4>
+      </place-card>
+    </template>
+    </div>
+  </template>
+  <script>
+  Polymer({
+   created: function() {
+//      console.log(2, this);
+    }
+  });
+  </script>
+</polymer-element>
