@@ -1,0 +1,16 @@
+/* Empty. Add your own CSS if you like */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 100%;
+}
+
+.angular-google-map, .container, .angular-google-map-container {
+    height: 100%;
+}
+
+#place-list {
+    width: 180px;
+    font-size: 12px;
+    overflow-y: scroll;
+}

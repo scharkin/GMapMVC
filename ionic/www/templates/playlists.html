@@ -1,0 +1,17 @@
+<ion-view title="Places of interest">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item>
+      </ion-item>
+      <ion-item ng-repeat="place in playlists | orderBy: '-city'"
+                class="place" ng-click="selectPlace(place)"
+                href="#/app/playlists/{{place.id}}">
+        <h3>{{place.address}}</h3>
+        <h4><b>{{place.city}}</b>, {{place.state}} {{place.zip}}</h4>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
