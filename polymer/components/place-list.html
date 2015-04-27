@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="place-service.html">
-<link rel="import" href="place-card.html">
+<link rel="import" href="place-cell.html">
 <polymer-element name="place-list" attributes="path">
   <template>
 		<style>
@@ -27,10 +27,10 @@
 	    <place-service id="service" places="{{places}}" url="{{path}}"></place-service>
     <div>
     <template repeat="{{place in places}}">
-    	<place-card>
+    	<place-cell>
 				<h3>{{place.address}}</h3>
         <h4><b>{{place.city}}</b>, {{place.state}} {{place.zip}}</h4>
-      </place-card>
+      </place-cell>
     </template>
     </div>
   </template>

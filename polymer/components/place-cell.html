@@ -1,0 +1,25 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<polymer-element name="place-cell" attributes="icon">
+  <template>
+    <style>
+      div {
+        border-bottom: 1px dashed gray;
+      }
+      div ::content h4,::content h3 {
+        font-size: 13px;
+        font-family: sans-serif;
+        font-weight: normal;
+      }
+      :host img {
+        float: right;
+      }
+    </style>
+    <div>
+      <img src="{{icon}}" />
+      <content></content>
+    </div>
+  </template>
+  <script>
+    Polymer({});
+  </script>
+</polymer-element>

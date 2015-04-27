@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="place-service.html">
 <link rel="import" href="../bower_components/google-map/google-map.html">
-<polymer-element name="place-map" attributes="path icon1">
+<polymer-element name="place-map" attributes="path icon">
   <template>
     <style>
       .container, google-map, place-map {
@@ -19,7 +19,7 @@
     <google-map id="place-map" fittomarkers>
       <template repeat="{{place in places}}">
         <google-map-marker latitude="{{place.lat}}" longitude="{{place.lon}}"
-                           title="{{place.name}}" icon="{{icon1}}">
+                           title="{{place.name}}" icon="{{icon}}">
         </google-map-marker>
       </template>
     </google-map>
